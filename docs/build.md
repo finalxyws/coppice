@@ -14,11 +14,15 @@ Run the project-local entrypoint from the repository root:
 ./script/build_and_run.sh --build
 ```
 
-The script builds the cross-project targets in dependency order (`M3Subscriptions`,
-`CoppiceCore`, then `Coppice`) with a repository-local derived data directory.
-It uses `-skipMacroValidation` for the reviewed open-source `M3Data` macro package,
-and disables code signing for this local development build. Use `--verify` to build,
-launch, and check the running process.
+The script creates a temporary workspace containing the three existing Xcode
+projects and builds the `Coppice` scheme with a repository-local derived data
+directory. This is required so Xcode produces one shared dynamic `M3Data`
+framework for both `CoppiceCore` and the app. Building the projects separately
+would embed duplicate `M3Data` runtime metadata and crash when `New Project`
+initializes Combine publishers. The script uses `-skipMacroValidation` for the
+reviewed open-source `M3Data` macro package and disables code signing for this
+local development build. Use `--verify` to build, launch, and check the running
+process.
 
 ## Artifact
 
@@ -38,9 +42,9 @@ Related retained build data and logs are under:
 
 - Added the `m3data` package reference to `CoppiceCore`, which previously had
   `M3Data` product references without a package declaration.
-- Prebuilt `M3Subscriptions` and `CoppiceCore` before the main app because the
-  command-line Xcode workflow does not resolve the repository's cross-project
-  workspace dependencies automatically.
+- Built all cross-project targets through a generated workspace so the app and
+  `CoppiceCore` share one embedded `M3Data` framework instead of carrying
+  duplicate static copies.
 - Converted the `Double` polygon coordinates to `CGFloat` before calling the
   existing `toDecimalPlaces` helper in `ImageHotspot.swift`.
 
