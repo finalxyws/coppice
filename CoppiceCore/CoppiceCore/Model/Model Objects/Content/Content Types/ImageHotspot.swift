@@ -123,7 +123,7 @@ extension ImageHotspot {
             let x = centre.x + radius * cos(angle)
             let y = centre.y + radius * sin(angle)
 
-            points.append(CGPoint(x: x.toDecimalPlaces(2), y: y.toDecimalPlaces(2)))
+            points.append(CGPoint(x: CGFloat(x).toDecimalPlaces(2), y: CGFloat(y).toDecimalPlaces(2)))
         }
 
         return ImageHotspot(kind: .polygon, points: points)

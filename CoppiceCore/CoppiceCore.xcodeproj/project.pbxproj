@@ -707,6 +707,7 @@
 			);
 			mainGroup = 99D0C74C24C5DD1E002EEBFA;
 			packageReferences = (
+				B060DA382E00419A0088E79A /* XCRemoteSwiftPackageReference "m3data" */,
 			);
 			productRefGroup = 99D0C75724C5DD1E002EEBFA /* Products */;
 			projectDirPath = "";
@@ -1398,13 +1399,26 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		B060DA382E00419A0088E79A /* XCRemoteSwiftPackageReference "m3data" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/steventroughtonsmith/m3data.git";
+			requirement = {
+				branch = preservation;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
 		990565DC2B5581DA00BB7B00 /* M3Data */ = {
 			isa = XCSwiftPackageProductDependency;
+			package = B060DA382E00419A0088E79A /* XCRemoteSwiftPackageReference "m3data" */;
 			productName = M3Data;
 		};
 		99248D202B3497DE0059546E /* M3Data */ = {
 			isa = XCSwiftPackageProductDependency;
+			package = B060DA382E00419A0088E79A /* XCRemoteSwiftPackageReference "m3data" */;
 			productName = M3Data;
 		};
 /* End XCSwiftPackageProductDependency section */
